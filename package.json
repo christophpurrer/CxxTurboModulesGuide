@@ -30,6 +30,18 @@
     "react-test-renderer": "18.2.0",
     "typescript": "4.8.4"
   },
+  "description": "React Native with Cxx Turbo Native Modules",
+  "author": "<Your Name> <your_email@your_provider.com> (https://github.com/<your_github_handle>)",
+  "license": "MIT",
+  "homepage": "https://github.com/<your_github_handle>/#readme",
+  "codegenConfig": {
+    "name": "AppSpecs",
+    "type": "all",
+    "jsSrcsDir": "tm",
+    "android": {
+      "javaPackageName": "com.facebook.fbreact.specs"
+    }
+  },
   "engines": {
     "node": ">=16"
   }
