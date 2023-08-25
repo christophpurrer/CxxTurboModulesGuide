@@ -32,7 +32,7 @@
 #include <fbjni/fbjni.h>
 #include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
 #include <rncli.h>
-#include <NativeSampleModule.h>
+#include <NativeSampleModuleCxx.h>
 
 namespace facebook {
 namespace react {
@@ -53,8 +53,8 @@ std::shared_ptr<TurboModule> cxxModuleProvider(
     const std::string &name,
     const std::shared_ptr<CallInvoker> &jsInvoker) {
   // Not implemented yet: provide pure-C++ NativeModules here.
-  if (name == "NativeSampleModule") {
-    return std::make_shared<facebook::react::NativeSampleModule>(jsInvoker);
+  if (name == "NativeSampleModuleCxx") {
+    return std::make_shared<facebook::react::NativeSampleModuleCxx>(jsInvoker);
   }
   return nullptr;
 }

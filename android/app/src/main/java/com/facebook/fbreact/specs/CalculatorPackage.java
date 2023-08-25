@@ -21,6 +21,8 @@ public class CalculatorPackage extends TurboReactPackage {
   ) {
     if (name.equals(CalculatorModule.NAME)) {
       return new CalculatorModule(reactContext);
+    } else if (name.equals(NativeSampleModule.NAME)) {
+      return new NativeSampleModule(reactContext);
     } else {
       return null;
     }
@@ -33,8 +35,20 @@ public class CalculatorPackage extends TurboReactPackage {
       moduleInfos.put(
         CalculatorModule.NAME,
         new ReactModuleInfo(
-          CalculatorModule.NAME,
-          CalculatorModule.NAME,
+          CalculatorModule.NAME, 
+                "RTNCalculator",
+          false, // canOverrideExistingModule
+          false, // needsEagerInit
+          true, // hasConstants
+          false, // isCxxModule
+          true // isTurboModule
+        )
+      );
+      moduleInfos.put(
+        NativeSampleModule.NAME,
+        new ReactModuleInfo(
+          NativeSampleModule.NAME,
+                "NativeSampleModule",
           false, // canOverrideExistingModule
           false, // needsEagerInit
           true, // hasConstants

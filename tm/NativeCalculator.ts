@@ -5,6 +5,6 @@ export interface Spec extends TurboModule {
   add(a: number, b: number): Promise<number>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>(
+export default TurboModuleRegistry.get<Spec>(
   'RTNCalculator',
-);
+) as Spec | null;

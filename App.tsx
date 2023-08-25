@@ -26,6 +26,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import NativeCalculator from './tm/NativeCalculator';
 import NativeSampleModule from './tm/NativeSampleModule';
+import NativeSampleModuleCxx from './tm/NativeSampleModuleCxx';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -65,7 +66,7 @@ function App(): JSX.Element {
   };
 
   const [result, setResult] = useState<number>(0);
-  NativeCalculator.add(2,3).then(v => setResult(v));
+  NativeCalculator?.add(2,3).then(v => setResult(v));
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -82,6 +83,12 @@ function App(): JSX.Element {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Section title="Cxx TurboModule">
+            NativeSampleModuleCxx.reverseString(...) ={' '}
+            {NativeSampleModuleCxx.reverseString(
+              'the quick brown fox jumps over the lazy dog'
+            )}
+          </Section>
+          <Section title="Java/ObjC TurboModule">
             NativeSampleModule.reverseString(...) ={' '}
             {NativeSampleModule.reverseString(
               'the quick brown fox jumps over the lazy dog'
