@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -24,6 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import NativeCalculator from './tm/NativeCalculator';
 import NativeSampleModule from './tm/NativeSampleModule';
 
 type SectionProps = PropsWithChildren<{
@@ -63,6 +64,9 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const [result, setResult] = useState<number>(0);
+  NativeCalculator.add(2,3).then(v => setResult(v));
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -78,12 +82,14 @@ function App(): JSX.Element {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Section title="Cxx TurboModule">
-            <Text>NativeSampleModule.reverseString(...) ={' '}
+            NativeSampleModule.reverseString(...) ={' '}
             {NativeSampleModule.reverseString(
               'the quick brown fox jumps over the lazy dog'
             )}
-            </Text>
-          </Section>;
+          </Section>
+          <Section title="Java/ObjC NativeCalculator">
+          NativeCalculator.add(2, 3) = {result}
+          </Section>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
